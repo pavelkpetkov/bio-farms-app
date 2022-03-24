@@ -1,0 +1,14 @@
+p {
+    background-color: lightblue;
+    color: green;
+    height: 50px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 99%;
+    margin-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+}

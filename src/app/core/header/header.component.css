@@ -1,0 +1,26 @@
+nav {
+    background-color: lightblue;
+    color: green;
+    height: 50px;
+    margin-top: 0px;
+}
+
+nav, ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    align-items: center;
+}
+
+li {
+    margin: 20px
+}
+
+.header:hover {
+    color: rgb(150, 119, 153);
+    cursor: pointer;
+}
+
+h2 {
+    margin-left: 10px;
+}
