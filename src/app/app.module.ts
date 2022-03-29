@@ -8,6 +8,7 @@ import { AboutComponent } from './about/about.component';
 import { UserModule } from './user/user.module';
 import { CoreModule } from './core/core.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BrowserModule,
     UserModule,
     CoreModule,
+    SharedModule,
     AppRoutingModule
   ],
   providers: [],
