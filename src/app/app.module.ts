@@ -9,6 +9,7 @@ import { UserModule } from './user/user.module';
 import { CoreModule } from './core/core.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SharedModule } from './shared/shared.module';
     UserModule,
     CoreModule,
     SharedModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
