@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { tap } from 'rxjs';
 import { IUser } from '../shared/interfaces/user';
 
 @Injectable({
@@ -18,7 +19,9 @@ export class UserService {
   ) { }
 
   registerUser(data: { username: string; email: string; password: string }) {
-    // return this.http.post<IUser>()
+    return this.http.post<IUser>(`http://localhost:3030/auth/register`, data, { withCredentials: true }).pipe(
+      tap((user) => this.user = user)
+    );
   }
 
 }
