@@ -26,7 +26,7 @@ export class RegisterComponent {
     this.formUser = this.fb.group({
       username: ['', [Validators.required]],
       email: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(4)]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
       repeatPassword: ['', [Validators.required]]
     })
 
@@ -36,7 +36,7 @@ export class RegisterComponent {
       farmName: ['', [Validators.required]],
       farmLocation: ['', [Validators.required]],
       products: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(4)]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
       repeatPassword: ['', [Validators.required]]
     })
 
@@ -57,7 +57,7 @@ export class RegisterComponent {
 
   registerFarmer(): void {
     if (this.formFarmer.invalid) { return; }
-    console.log(this.formFarmer.value);
+    // console.log(this.formFarmer.value);
     this.userService.registerFarmer(this.formFarmer.value).subscribe({
       next: () => {
         this.router.navigate(['/']);

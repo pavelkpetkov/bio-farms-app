@@ -1,9 +1,16 @@
-<nav>
+<nav class="header">
     <h2 class="header" routerLink="/home">Be Bio!</h2>
-    <ul>
-        <li class="header" routerLink="/about">About</li>
-        <li class="header">All products</li>
-        <li class="header" routerLink="/login">Login</li>
-        <li class="header" routerLink="/register">Register</li>
+    <ul *ngIf="!isLoggedUser && !isLoggedFarmer">
+        <li routerLink="/about">About</li>
+        <li routerLink="/products">All products</li>
+        <li routerLink="/login">Login</li>
+        <li routerLink="/register">Register</li>
+    </ul>
+    <ul *ngIf="isLoggedUser || isLoggedFarmer">
+        <li routerLink="/profile">{{clientName || farmerName}}'s profile</li>
+        <li *ngIf="clientName" routerLink="/products">All products</li>
+        <li *ngIf="farmerName" routerLink="/new-product">Create product</li>
+        <li *ngIf="clientName" (click)="logoutClient()">Logout</li>
+        <li *ngIf="farmerName" (click)="logoutFarmer()">Logout</li>
     </ul>
 </nav>

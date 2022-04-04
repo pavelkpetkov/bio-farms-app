@@ -1,8 +1,69 @@
 <div id="login">
-    <h2>Login</h2>
-    <label for="username">Username:</label>
-    <input type="text">
-    <span></span>
-    <label for="password">Password:</label>
-    <input type="password">
+    <!-- {{form.value | json}} -->
+    
+    <fieldset>
+        <div *ngIf="!hide" style="display: flex; flex-direction: column; align-items: center">
+            <p>You are:</p>
+            <div id="register">
+                <button (click)="userRole()">Client</button>
+                <button (click)="farmerRole()">Farmer</button>
+            </div>
+        </div>
+        <div  *ngIf="isUser">
+            <h2>Login as a client</h2>
+            <form #form="ngForm" action="" method="post" (ngSubmit)="loginUser(form)">
+                <label for="username">Username:</label>
+                <input #usernameInput="ngModel" ngModel type="text" name="username" required>
+                <!-- {{usernameInput.errors | json}} -->
+                <ng-container *ngIf="usernameInput.touched">
+                    <p class="error" *ngIf="usernameInput.errors?.['required']">
+                        Username is required!
+                    </p>
+                </ng-container>
+                <br>
+                <label for="password">Password:</label>
+                <input #passwordInput="ngModel" ngModel type="password" name="password" required [minlength]="3">
+                <ng-container *ngIf="passwordInput.touched">
+                    <p class="error" *ngIf="passwordInput.errors?.['required']">
+                        Password is required!
+                    </p>
+                    <p class="error" *ngIf="passwordInput.errors?.['required'] || passwordInput.errors?.['minlength']">
+                        Password must be at least 3 characters long!
+                    </p>
+                </ng-container>
+                <br>
+                <button>Log In</button>
+                <p>Don't have an account? <a routerLink="/register">Register here</a></p>
+            </form>
+        </div>
+
+        <div  *ngIf="isFarmer">
+            <h2>Login as a farmer</h2>
+            <form #form="ngForm" action="" method="post" (ngSubmit)="loginFarmer(form)">
+                <label for="username">Username:</label>
+                <input #usernameInput="ngModel" ngModel type="text" name="username" required>
+                <!-- {{usernameInput.errors | json}} -->
+                <ng-container *ngIf="usernameInput.touched">
+                    <p class="error" *ngIf="usernameInput.errors?.['required']">
+                        Username is required!
+                    </p>
+                </ng-container>
+                <br>
+                <label for="password">Password:</label>
+                <input #passwordInput="ngModel" ngModel type="password" name="password" required [minlength]="3">
+                <ng-container *ngIf="passwordInput.touched">
+                    <p class="error" *ngIf="passwordInput.errors?.['required']">
+                        Password is required!
+                    </p>
+                    <p class="error" *ngIf="passwordInput.errors?.['required'] || passwordInput.errors?.['minlength']">
+                        Password must be at least 3 characters long!
+                    </p>
+                </ng-container>
+                <br>
+                <button>Log In</button>
+                <p>Don't have an account? <a routerLink="/register">Register here</a></p>
+            </form>
+        </div>
+
+    </fieldset>
 </div>

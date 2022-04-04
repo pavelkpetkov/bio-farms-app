@@ -56,8 +56,18 @@ router.post('/loginUser', async (req, res) => {
     }
 });
 
+router.post('/loginFarmer', async (req, res) => {
+    try {
+        const farmerData = await loginFarmer(req.body.username, req.body.password);
+        res.json(farmerData);
+
+    } catch (err) {
+        res.status(err.status || 400).json({ message: err.message });
+    }
+});
+
 router.get('/logout', (req, res) => {
-    res.status(204).end();
+    res.status(204).send({ message: 'Logged out!' });;
 });
 
 router.get('/profile/:id', async (req, res) => {
