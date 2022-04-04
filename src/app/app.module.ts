@@ -10,6 +10,7 @@ import { CoreModule } from './core/core.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductModule } from './product/product.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     UserModule,
     CoreModule,
     SharedModule,
+    ProductModule,
     HttpClientModule,
     AppRoutingModule
   ],

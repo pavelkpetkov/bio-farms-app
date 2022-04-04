@@ -15,9 +15,3 @@
 button {
     margin: 10px;
 }
-
-.error {
-    color: red;
-    font-style: italic;
-    font-size: smaller;
-}

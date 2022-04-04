@@ -1,15 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-new-product',
   templateUrl: './new-product.component.html',
   styleUrls: ['./new-product.component.css']
 })
-export class NewProductComponent implements OnInit {
+export class NewProductComponent {
 
-  constructor() { }
+  constructor(
+    private productServise: ProductService,
+    private router: Router
+  ) { }
 
-  ngOnInit(): void {
+  createProduct(form: NgForm): void {
+    if (form.invalid) { return; }
+    this.productServise.saveProduct(form.value).subscribe({
+      next: () => {
+        this.router.navigate(['/products'])
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 
 }
