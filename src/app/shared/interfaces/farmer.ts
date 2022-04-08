@@ -3,5 +3,6 @@ export interface IFarmer {
     email: string,
     farmName: string,
     farmLocation: string,
-    products: string
+    products: string,
+    _id: string
 }

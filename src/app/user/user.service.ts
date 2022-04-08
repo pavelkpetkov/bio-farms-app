@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { tap } from 'rxjs';
+import { Inject, Injectable } from '@angular/core';
+import { tap } from 'rxjs/operators';
+import { LocalStorage } from '../core/injection-token';
 import { IFarmer } from '../shared/interfaces/farmer';
 import { IUser } from '../shared/interfaces/user';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+
 export class UserService {
 
   user: IUser | null | undefined = undefined;
@@ -20,7 +20,15 @@ export class UserService {
     return !!this.farmer;
   }
 
+  get isLogged(): boolean {
+    if (this.isLoggedUser === true) { return true; }
+    else if (this.isLoggedFarmer === true) { return true; }
+    else { return false; }
+  }
+
   constructor(
+    @Inject(LocalStorage)
+    private localStorage: Window['localStorage'],
     private http: HttpClient
   ) { }
 
@@ -38,26 +46,57 @@ export class UserService {
 
   loginUser(data: { username: string; password: string }) {
     return this.http.post<IUser>(`http://localhost:3030/auth/loginUser`, data, { withCredentials: true }).pipe(
-      tap((user) => this.user = user)
+      tap((user) => {
+        this.user = user;
+        this.localStorage.setItem('<USER>', JSON.stringify(this.user))
+      })
     );
   }
 
   loginFarmer(data: { username: string; password: string }) {
     return this.http.post<IFarmer>(`http://localhost:3030/auth/loginFarmer`, data, { withCredentials: true }).pipe(
-      tap((farmer) => this.farmer = farmer)
+      tap((farmer) => {
+        this.farmer = farmer;
+        this.localStorage.setItem('<FARMER>', JSON.stringify(this.farmer))
+      })
     );
   }
 
   logoutClient() {
     return this.http.get<IUser>(`http://localhost:3030/auth/logout`, { withCredentials: true }).pipe(
-      tap(() => this.user = null)
-    );
+      tap(() => {
+        this.user = null;
+        this.localStorage.removeItem('<USER>');
+      }));
   }
 
   logoutFarmer() {
     return this.http.get<IFarmer>(`http://localhost:3030/auth/logout`, { withCredentials: true }).pipe(
-      tap(() => this.farmer = null)
-    );
+      tap(() => {
+        this.farmer = null;
+        this.localStorage.removeItem('<FARMER>');
+      }));
+  }
+
+  getClientInfo() {
+    if (this.user) {
+      const id = this.user._id;
+      return this.http.get<IUser>(`http://localhost:3030/auth/profileClient/${id}`, { withCredentials: true }).pipe(
+        tap((user) => this.user = user)
+      )
+    } else {
+      return;
+    }
+  }
+
+  getFarmerInfo() {
+
+    // const id = this.farmer?._id;
+    return console.log(this.farmer!._id);
+    // return this.http.get<IFarmer>(`http://localhost:3030/auth/profileFarmer/${id}`, { withCredentials: true }).pipe(
+    //   tap((farmer) => this.farmer = farmer)
+    // )
+
   }
 
 }

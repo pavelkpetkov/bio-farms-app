@@ -7,10 +7,10 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { UserModule } from './user/user.module';
 import { CoreModule } from './core/core.module';
+import { ProductModule } from './product/product.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductModule } from './product/product.module';
 
 @NgModule({
   declarations: [
@@ -24,8 +24,8 @@ import { ProductModule } from './product/product.module';
     UserModule,
     CoreModule,
     SharedModule,
-    ProductModule,
     HttpClientModule,
+    ProductModule,
     AppRoutingModule
   ],
   providers: [],

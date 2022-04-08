@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
@@ -8,7 +8,7 @@ import { UserService } from '../user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   isUser = false;
   isFarmer = false;
@@ -18,9 +18,6 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private router: Router
   ) { }
-
-  ngOnInit(): void {
-  }
 
   loginUser(form: NgForm): void {
     if(form.invalid) { return; }

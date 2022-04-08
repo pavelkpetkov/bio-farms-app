@@ -70,9 +70,14 @@ router.get('/logout', (req, res) => {
     res.status(204).send({ message: 'Logged out!' });;
 });
 
-router.get('/profile/:id', async (req, res) => {
-    const owner = await getUserById(req.params.id);
-    res.json(owner);
+router.get('/profileClient/:id', async (req, res) => {
+    const client = await getUserById(req.params.id);
+    res.json(client);
+});
+
+router.get('/profileFarmer/:id', async (req, res) => {
+    const farmer = await getFarmerById(req.params.id);
+    res.json(farmer);
 });
 
 module.exports = router;

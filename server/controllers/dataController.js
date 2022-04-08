@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { isAuth, isOwner } = require('../middlewares/guards');
+const { isAuth, isOwner, isAuthFarmer } = require('../middlewares/guards');
 const { getAll, createProduct, updateProduct, deleteProduct } = require('../services/product');
 const preload = require('../middlewares/preload');
 
@@ -8,14 +8,15 @@ router.get('/', async (req, res) => {
     res.json(data);
 });
 
-router.post('/create', isAuth(), async (req, res) => {
+router.post('/create', isAuthFarmer(), async (req, res) => {
 
     const data = {
         title: req.body.title,
         productImage: req.body.productImage,
         description: req.body.description,
-        farmer: req.user._id,
+        farmer: req.body.farmer_id,
     }
+    console.log(`This is the data from client: ${req.body.farmer_id}`);
 
     try {
         const result = await createProduct(data);

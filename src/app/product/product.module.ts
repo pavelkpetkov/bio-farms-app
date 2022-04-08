@@ -18,9 +18,9 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     SharedModule,
-    ProductRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
-    FormsModule
+    ProductRoutingModule
   ],
   exports: [
     NewProductComponent,

@@ -7,6 +7,17 @@ function isAuth() {
         }
     }
 }
+
+function isAuthFarmer() {
+    return (req, res, next) => {
+        if (req.body.farmer_id) {
+            next();
+        } else {
+            res.status(401).json({ message: 'Please sign in.' });
+        }
+    }
+}
+
 function isGuest() {
     return (req, res, next) => {
         if (!req.user) {
@@ -31,5 +42,6 @@ function isOwner() {
 module.exports = {
     isAuth,
     isGuest,
-    isOwner
+    isOwner,
+    isAuthFarmer
 }
