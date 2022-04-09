@@ -78,25 +78,8 @@ export class UserService {
       }));
   }
 
-  getClientInfo() {
-    if (this.user) {
-      const id = this.user._id;
-      return this.http.get<IUser>(`http://localhost:3030/auth/profileClient/${id}`, { withCredentials: true }).pipe(
-        tap((user) => this.user = user)
-      )
-    } else {
-      return;
-    }
-  }
-
-  getFarmerInfo() {
-
-    // const id = this.farmer?._id;
-    return console.log(this.farmer!._id);
-    // return this.http.get<IFarmer>(`http://localhost:3030/auth/profileFarmer/${id}`, { withCredentials: true }).pipe(
-    //   tap((farmer) => this.farmer = farmer)
-    // )
-
+  getFarmerInfo(id: string) {
+    return this.http.get<IFarmer>(`http://localhost:3030/auth/profileFarmer/${id}`, { withCredentials: true });
   }
 
 }

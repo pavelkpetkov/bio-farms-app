@@ -21,4 +21,9 @@ export class ProductService {
   loadProducts() {
     return this.http.get<IProduct[]>(`http://localhost:3030/data`, { withCredentials: true });
   }
+
+  loadProduct(id: string) {
+    return this.http.get<IProduct>(`http://localhost:3030/data/details/${id}`, { withCredentials: true });
+  }
+
 }

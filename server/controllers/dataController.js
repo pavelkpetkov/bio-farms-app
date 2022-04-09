@@ -30,7 +30,7 @@ router.post('/create', isAuthFarmer(), async (req, res) => {
 router.get('/details/:id', preload(), async (req, res) => {
 
     const item = req.data.toObject();
-    item._ownerId = item.author.toString();
+    item._ownerId = item.farmer.toString();
     res.json(item);
 });
 
@@ -51,7 +51,7 @@ router.put('/edit/:id', isAuth(), preload(), isOwner(), async (req, res) => {
 
 });
 
-router.delete('/:id', isAuth(), preload(), isOwner(), async (req, res) => {
+router.delete('/delete/:id', isAuth(), preload(), isOwner(), async (req, res) => {
 
     try {
         await deleteProduct(req.params.id);

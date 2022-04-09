@@ -15,7 +15,6 @@ export class ProfileComponent {
   }
 
   products: IProduct[] | undefined;
-  allMyProducts: IProduct[] | undefined;
 
   constructor(
     private userService: UserService,
