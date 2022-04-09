@@ -17,4 +17,8 @@ export class ProductService {
     console.log(dataToSend);
     return this.http.post<IProduct>(`http://localhost:3030/data/create`, dataToSend, { withCredentials: true });
   }
+
+  loadProducts() {
+    return this.http.get<IProduct[]>(`http://localhost:3030/data`, { withCredentials: true });
+  }
 }

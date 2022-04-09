@@ -1,0 +1,22 @@
+.profile {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.aside-product {
+    color: red;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    max-width: 200px;
+    max-height: 150px;
+}
