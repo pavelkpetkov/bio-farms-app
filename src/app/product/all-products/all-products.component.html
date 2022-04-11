@@ -1,1 +1,9 @@
-<p>all-products works!</p>
+<div class="container" *ngIf="allProducts">
+    <div *ngFor="let product of allProducts">
+        <fieldset class="product-card">
+            <h3>{{product.title}}</h3>
+            <img alt="Product Image" src="{{product.productImage}}">
+            <button [routerLink]="['/products', product._id]">Details</button>
+        </fieldset>
+    </div>
+</div>

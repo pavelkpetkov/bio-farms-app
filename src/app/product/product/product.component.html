@@ -4,6 +4,9 @@
     <p>location: <strong>{{owner!?.farmLocation}}</strong> </p>
     <img alt="Product Image" src="{{product!.productImage}}">
     <p>Description: {{product.description}}</p>
-    <button>Edit</button>
-    <button (click)="deleteProduct()">Delete</button>
+
+    <div *ngIf="isOwner">
+        <button>Edit</button>
+        <button (click)="deleteProduct()">Delete</button>
+    </div>
 </fieldset>

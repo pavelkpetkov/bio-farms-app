@@ -8,7 +8,7 @@
     </ul>
     <ul *ngIf="isLoggedUser || isLoggedFarmer">
         <li routerLink="/profile">{{clientName || farmerName}}'s profile</li>
-        <li *ngIf="clientName" routerLink="/products">All products</li>
+        <li routerLink="/products">All products</li>
         <li *ngIf="farmerName" routerLink="/new-product">Create product</li>
         <li *ngIf="clientName" (click)="logoutClient()">Logout</li>
         <li *ngIf="farmerName" (click)="logoutFarmer()">Logout</li>

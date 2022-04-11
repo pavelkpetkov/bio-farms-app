@@ -14,6 +14,7 @@ export class ProductComponent {
 
   product: IProduct | undefined;
   owner: IFarmer | undefined;
+  isOwner: boolean = false;
 
   get farmer() {
     return this.userService.farmer;
@@ -34,7 +35,10 @@ export class ProductComponent {
     const id = this.activatedRoute.snapshot.params['productId'];
     this.productService.loadProduct(id).subscribe(product => {
       this.product = product;
-      this.userService.getFarmerInfo(this.product!.farmer).subscribe(owner => this.owner = owner);
+      this.userService.getFarmerInfo(this.product!.farmer).subscribe(owner => {
+        this.owner = owner;
+        this.isOwner = (this.owner._id === this.userService.farmer?._id);
+      });
     });
   }
 
