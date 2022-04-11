@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IProduct } from '../shared/interfaces/product';
 import { UserService } from '../user/user.service';
@@ -8,7 +8,9 @@ import { UserService } from '../user/user.service';
 })
 export class ProductService {
 
-  constructor(private http: HttpClient, private userService: UserService) { }
+  product : IProduct | undefined;
+
+  constructor(private http: HttpClient, private userService: UserService) {}
 
   saveProduct(data: any){
     console.log(this.userService.farmer?._id);
@@ -24,6 +26,18 @@ export class ProductService {
 
   loadProduct(id: string) {
     return this.http.get<IProduct>(`http://localhost:3030/data/details/${id}`, { withCredentials: true });
+  }
+
+  deleteOneProduct(id: string, owner_id: string) {
+    const farmer_id = this.userService.farmer?._id;
+
+    const options = {
+      body: {
+        farmer_id,
+        owner_id
+      }
+    };
+    return this.http.delete<IProduct>(`http://localhost:3030/data/delete/${id}`,  options );
   }
 
 }

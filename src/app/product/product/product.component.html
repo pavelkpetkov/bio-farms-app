@@ -1,10 +1,9 @@
-
 <fieldset class="product-card" *ngIf="product">
     <h3>{{product.title}}</h3>
+    <p>grown in: <strong>{{owner!?.farmName}}</strong></p>
+    <p>location: <strong>{{owner!?.farmLocation}}</strong> </p>
     <img alt="Product Image" src="{{product!.productImage}}">
     <p>Description: {{product.description}}</p>
-    <p>farm: {{owner!.farmName}}</p>
-
     <button>Edit</button>
     <button (click)="deleteProduct()">Delete</button>
 </fieldset>

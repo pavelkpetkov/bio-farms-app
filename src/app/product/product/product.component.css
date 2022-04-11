@@ -1,0 +1,17 @@
+.product-card {
+    max-width: 350px;
+    max-height: 350px;
+}
+
+img {
+    width: 200px;
+    height: 150px;
+    object-fit: fill;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -34,24 +34,24 @@ router.get('/details/:id', preload(), async (req, res) => {
     res.json(item);
 });
 
-router.put('/edit/:id', isAuth(), preload(), isOwner(), async (req, res) => {
+// router.put('/edit/:id', isAuth(), preload(), isOwner(), async (req, res) => {
 
-    const updated = {
-        title: req.body.title,
-        productImage: req.body.productImage,
-        description: req.body.description,
-    }
+//     const updated = {
+//         title: req.body.title,
+//         productImage: req.body.productImage,
+//         description: req.body.description,
+//     }
 
-    try {
-        const result = await updateProduct(req.data, updated);
-        res.json(result);
-    } catch(err) {
-        res.status(err.status || 400).json({ message: err.message });
-    } 
+//     try {
+//         const result = await updateProduct(req.data, updated);
+//         res.json(result);
+//     } catch(err) {
+//         res.status(err.status || 400).json({ message: err.message });
+//     } 
 
-});
+// });
 
-router.delete('/delete/:id', isAuth(), preload(), isOwner(), async (req, res) => {
+router.delete('/delete/:id', isAuthFarmer(), preload(), isOwner(), async (req, res) => {
 
     try {
         await deleteProduct(req.params.id);

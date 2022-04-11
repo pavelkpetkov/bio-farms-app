@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IFarmer } from 'src/app/shared/interfaces/farmer';
 import { IProduct } from 'src/app/shared/interfaces/product';
 import { UserService } from 'src/app/user/user.service';
@@ -22,7 +22,8 @@ export class ProductComponent {
   constructor(
     private userService: UserService,
     private productService: ProductService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) { 
     this.fetchProduct();
   }
@@ -37,8 +38,14 @@ export class ProductComponent {
     });
   }
 
-  deleteProduct() {
-
+  deleteProduct(): void {
+    const id = this.activatedRoute.snapshot.params['productId'];
+    this.productService.loadProduct(id).subscribe(product => this.product = product);
+    const owner_id = this.product!.farmer;
+    this.productService.deleteOneProduct(id, owner_id).subscribe(() => {
+      this.product = undefined;
+      this.router.navigate(['/profile']);
+    });
   }
 
 }
