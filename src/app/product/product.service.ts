@@ -40,4 +40,10 @@ export class ProductService {
     return this.http.delete<IProduct>(`http://localhost:3030/data/delete/${id}`,  options );
   }
 
+  editOneProduct(id: string, owner_id: string, data: any) {
+    const farmer_id = this.userService.farmer?._id;
+    const dataToSend = {...data, farmer_id, owner_id};
+    return this.http.put<IProduct>(`http://localhost:3030/data/edit/${id}`, dataToSend, { withCredentials: true });
+  }
+
 }

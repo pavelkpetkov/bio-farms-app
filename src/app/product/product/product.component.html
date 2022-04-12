@@ -6,7 +6,7 @@
     <p>Description: {{product.description}}</p>
 
     <div *ngIf="isOwner">
-        <button>Edit</button>
+        <button routerLink="/edit/{{product!._id}}">Edit</button>
         <button (click)="deleteProduct()">Delete</button>
     </div>
 </fieldset>
