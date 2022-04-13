@@ -1,4 +1,4 @@
-<div class="profile">
+<div class="profile" *ngIf="farmer">
     <fieldset>
         <h3>{{farmer!.farmName}}</h3>
         <p>Location of my farm: {{farmer!.farmLocation}}</p>
@@ -17,5 +17,27 @@
             </div>
         </div>
         <div *ngIf="!products">Loading...</div>
+    </aside>
+</div>
+<div class="profile" *ngIf="client">
+    <fieldset>
+        <h3>Personal information</h3>
+        <p>Username: {{client!.username}}</p>
+        <p>Email: {{client!.email}}</p>
+    </fieldset>
+    <aside>
+        <fieldset>
+            <h3>My ordered products:</h3>
+            <!-- <div *ngIf="products">
+                <div *ngFor="let myProduct of products" class="aside-product">
+                    <fieldset class="product-card">
+                        <h3>{{myProduct.title}}</h3>
+                        <img alt="Product Image" src="{{myProduct.productImage}}">
+                        <button [routerLink]="['/products', myProduct._id]">Details</button>
+                    </fieldset>
+                </div>
+            </div>
+            <div *ngIf="!products">Loading...</div> -->
+        </fieldset>
     </aside>
 </div>

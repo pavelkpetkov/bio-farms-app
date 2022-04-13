@@ -14,6 +14,10 @@ export class ProfileComponent {
     return this.userService.farmer;
   }
 
+  get client() {
+    return this.userService.user;
+  }
+
   products: IProduct[] | undefined;
 
   constructor(

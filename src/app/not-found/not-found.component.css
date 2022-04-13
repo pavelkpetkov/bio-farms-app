@@ -1,0 +1,8 @@
+.notFound {
+    background-image: url('../../assets/not-found.png');
+    background-color: rgba(247,248,249,255);
+    width: 850px;
+    height: 556px;
+    margin: auto;
+    padding: 10px;
+}
