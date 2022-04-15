@@ -21,9 +21,11 @@ export class ProfileComponent {
 
   products: IProduct[] | undefined;
   allProducts: any[] | undefined;
+  orderedProducts: any[] | undefined;
+  orders: any[] | undefined;
   clientId: any | undefined;
-  resultArr: any | undefined
-  imagesArr: any | undefined
+  resultArr: any | undefined;
+  imagesArr: any | undefined;
 
   constructor(
     private userService: UserService,
@@ -31,6 +33,7 @@ export class ProfileComponent {
   ) {
     this.fetchProducts();
     this.fetchAllProducts();
+    this.loadOrderedProducts();
   }
 
   fetchProducts(): void {
@@ -45,7 +48,7 @@ export class ProfileComponent {
       let clientId = this.clientId;
       let result: any = [];
       let images: any = [];
-      this.allProducts?.filter(function(el) {
+      this.allProducts?.filter(function (el) {
         let arrayOfOrders = el.orders;
         for (let i = 0; i < arrayOfOrders.length; i++) {
           const element = arrayOfOrders[i];
@@ -59,13 +62,35 @@ export class ProfileComponent {
       let modifiedArr = [];
       for (let j = 0; j < result.length; j++) {
         const name = result[j];
-        const qty = result[j+1];
+        const qty = result[j + 1];
         const output = `${name} - ${qty} kg.`;
         modifiedArr.push(output);
         j++;
       }
       this.resultArr = modifiedArr;
       this.imagesArr = images;
+    });
+  }
+
+  loadOrderedProducts() {
+    this.orderedProducts = undefined;
+    this.orders = undefined;
+    this.productService.loadProducts().subscribe(products => {
+      this.orderedProducts = products
+        .filter(p => p.farmer == this.farmer?._id)
+        .filter(p => p.orders.length > 0);
+
+      for (const p of this.orderedProducts) {
+        let totalQuantityOrderedofThisProduct: Number = 0;
+        console.log(p);
+        for (const o of p.orders) {
+          const currentOrder: Number = o.quantity;
+          totalQuantityOrderedofThisProduct = Number(totalQuantityOrderedofThisProduct) + Number(currentOrder);
+        }
+        let res = `Total orders for ${p.title} are ${totalQuantityOrderedofThisProduct} kg.`;
+        this.orders ? this.orders.push(res) : this.orders = [res];
+        console.log(this.orders);
+      }
     });
   }
 

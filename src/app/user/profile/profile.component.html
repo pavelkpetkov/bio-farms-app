@@ -8,6 +8,7 @@
     </fieldset>
     <aside>
         <div *ngIf="products">
+            <h3>My products:</h3>
             <div *ngFor="let myProduct of products" class="aside-product">
                 <fieldset class="product-card">
                     <h3>{{myProduct.title}}</h3>
@@ -18,7 +19,19 @@
         </div>
         <div *ngIf="!products">Loading...</div>
     </aside>
+    <aside>
+        <div *ngIf="orders">
+            <h3>Ordered products:</h3>
+            <div *ngFor="let order of orders" class="aside-product">
+                <fieldset class="product-card">
+                    <p>{{order}}</p>
+                </fieldset>
+            </div>
+        </div>
+        <div *ngIf="!orders">no orders yet.</div>
+    </aside>
 </div>
+
 <div class="profile" *ngIf="client">
     <fieldset>
         <h3>Personal information</h3>
