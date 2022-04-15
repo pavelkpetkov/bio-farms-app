@@ -3,5 +3,6 @@ export interface IProduct {
     title: string,
     productImage: string,
     description: string,
-    farmer: string
+    farmer: string,
+    orders: [],
 }

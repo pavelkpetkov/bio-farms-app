@@ -9,4 +9,19 @@
         <button routerLink="/edit/{{product!._id}}">Edit</button>
         <button (click)="deleteProduct()">Delete</button>
     </div>
+
+    <div *ngIf="client && !toggle">
+        <!-- <button routerLink="/edit/{{product!._id}}">Edit</button> -->
+        <button (click)="order()">Order</button>
+    </div>
+    <div *ngIf="client && toggle">
+        <hr>
+        <div class="order">
+            <p>I would like</p>
+            <input type="text" #quantity>
+            <p>kg. </p>
+            <!-- <button routerLink="/edit/{{product!._id}}">Edit</button> -->
+            <button type="button" (click)="addOrder(quantity.value)">Confirm</button>
+        </div>
+    </div>
 </fieldset>

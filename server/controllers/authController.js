@@ -4,7 +4,6 @@ const { registerFarmer, loginFarmer, getFarmerById } = require('../services/farm
 
 router.post('/registerUser', async (req, res) => {
     try {
-        // console.log(req.body);
         if (!req.body.username.trim()) {
             throw new Error('Username is required!');
         }
@@ -26,7 +25,6 @@ router.post('/registerUser', async (req, res) => {
 
 router.post('/registerFarmer', async (req, res) => {
     try {
-        // console.log(req.body);
         if (!req.body.username.trim()) {
             throw new Error('Username is required!');
         }

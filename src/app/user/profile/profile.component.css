@@ -20,3 +20,9 @@ img {
     max-width: 200px;
     max-height: 150px;
 }
+
+.ordered {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

@@ -25,19 +25,19 @@
         <p>Username: {{client!.username}}</p>
         <p>Email: {{client!.email}}</p>
     </fieldset>
+
     <aside>
         <fieldset>
             <h3>My ordered products:</h3>
-            <!-- <div *ngIf="products">
-                <div *ngFor="let myProduct of products" class="aside-product">
-                    <fieldset class="product-card">
-                        <h3>{{myProduct.title}}</h3>
-                        <img alt="Product Image" src="{{myProduct.productImage}}">
-                        <button [routerLink]="['/products', myProduct._id]">Details</button>
+            <div *ngIf="resultArr">
+                <div *ngFor="let myOrder of resultArr let index = index" class="aside-product">
+                    <fieldset class="product-card" class="ordered">
+                        <img alt="Product Image" src="{{imagesArr[index]}}">
+                        <h3>{{myOrder}}</h3>
                     </fieldset>
                 </div>
             </div>
-            <div *ngIf="!products">Loading...</div> -->
+            <div *ngIf="!resultArr">Loading...</div>
         </fieldset>
-    </aside>
+    </aside> 
 </div>

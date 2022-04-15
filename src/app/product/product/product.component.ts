@@ -15,9 +15,14 @@ export class ProductComponent {
   product: IProduct | undefined;
   owner: IFarmer | undefined;
   isOwner: boolean = false;
+  toggle: boolean = false;
 
   get farmer() {
     return this.userService.farmer;
+  }
+
+  get client() {
+    return this.userService.user;
   }
 
   constructor(
@@ -52,4 +57,19 @@ export class ProductComponent {
     });
   }
 
+  order(): void {
+    this.toggle = true;
+  }
+
+  addOrder(quantity: any): void {
+    const id = this.activatedRoute.snapshot.params['productId'];
+    let qty = + quantity;
+    if (qty < 0 || quantity === NaN) { console.log('Enter positive value!'); return;  }
+
+    this.productService.addOrder(id, qty).subscribe(product => {
+      this.product = product;
+      this.router.navigate(['/profile']);
+    })
+  }
+ 
 }

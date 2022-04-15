@@ -1,6 +1,6 @@
-function isAuth() {
+function isAuthClient() {
     return (req, res, next) => {
-        if (req.user) {
+        if (req.body.newOrder.client) {
             next();
         } else {
             res.status(401).json({ message: 'Please sign in.' });
@@ -39,7 +39,7 @@ function isOwner() {
 }
 
 module.exports = {
-    isAuth,
+    isAuthClient,
     isGuest,
     isOwner,
     isAuthFarmer

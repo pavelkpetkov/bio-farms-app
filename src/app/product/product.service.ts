@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IProduct } from '../shared/interfaces/product';
 import { UserService } from '../user/user.service';
@@ -8,15 +8,14 @@ import { UserService } from '../user/user.service';
 })
 export class ProductService {
 
-  product : IProduct | undefined;
+  product: IProduct | undefined;
 
-  constructor(private http: HttpClient, private userService: UserService) {}
+  constructor(private http: HttpClient, private userService: UserService) { }
 
-  saveProduct(data: any){
-    console.log(this.userService.farmer?._id);
+  saveProduct(data: any) {
     const farmer_id = this.userService.farmer?._id;
-    const dataToSend = {...data, farmer_id};
-    console.log(dataToSend);
+    const dataToSend = { ...data, farmer_id };
+
     return this.http.post<IProduct>(`http://localhost:3030/data/create`, dataToSend, { withCredentials: true });
   }
 
@@ -37,13 +36,21 @@ export class ProductService {
         owner_id
       }
     };
-    return this.http.delete<IProduct>(`http://localhost:3030/data/delete/${id}`,  options );
+    return this.http.delete<IProduct>(`http://localhost:3030/data/delete/${id}`, options);
   }
 
   editOneProduct(id: string, owner_id: string, data: any) {
     const farmer_id = this.userService.farmer?._id;
-    const dataToSend = {...data, farmer_id, owner_id};
+    const dataToSend = { ...data, farmer_id, owner_id };
     return this.http.put<IProduct>(`http://localhost:3030/data/edit/${id}`, dataToSend, { withCredentials: true });
+  }
+
+  addOrder(id: string, quantity: number) {
+    const newOrder = { client: this.userService.user?._id, quantity: quantity }
+    const body = {
+        newOrder
+      }
+    return this.http.put<IProduct>(`http://localhost:3030/data/order/${id}`, body, { withCredentials: true })
   }
 
 }
