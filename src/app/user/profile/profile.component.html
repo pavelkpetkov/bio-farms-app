@@ -1,20 +1,25 @@
 <div class="profile" *ngIf="farmer">
-    <fieldset>
-        <h3>{{farmer!.farmName}}</h3>
-        <p>Location of my farm: {{farmer!.farmLocation}}</p>
-        <p>Production of my farm: {{farmer!.products}}</p>
-        <p>Username: {{farmer!.username}}</p>
-        <p>Email: {{farmer!.email}}</p>
-    </fieldset>
+    <div class="wrapInfo">
+        <h3>Personal information:</h3>
+        <fieldset>
+            <p>Name of my farm: <strong>{{farmer!.farmName}}</strong></p>
+            <p>Location of my farm: <strong>{{farmer!.farmLocation}}</strong></p>
+            <p>Production of my farm: <strong>{{farmer!.products}}</strong></p>
+            <p>Username: <strong>{{farmer!.username}}</strong></p>
+            <p>Email: <strong>{{farmer!.email}}</strong></p>
+        </fieldset>
+    </div>
     <aside>
         <div *ngIf="products">
             <h3>My products:</h3>
-            <div *ngFor="let myProduct of products" class="aside-product">
-                <fieldset class="product-card">
-                    <h3>{{myProduct.title}}</h3>
-                    <img alt="Product Image" src="{{myProduct.productImage}}">
-                    <button [routerLink]="['/products', myProduct._id]">Details</button>
-                </fieldset>
+            <div class="wrapProducts">
+                <div *ngFor="let myProduct of products" class="aside-product">
+                    <fieldset class="product-card">
+                        <h3>{{myProduct.title}}</h3>
+                        <img alt="Product Image" src="{{myProduct.productImage}}">
+                        <button [routerLink]="['/products', myProduct._id]">Details</button>
+                    </fieldset>
+                </div>
             </div>
         </div>
         <div *ngIf="!products">Loading...</div>
@@ -22,8 +27,8 @@
     <aside>
         <div *ngIf="orders">
             <h3>Ordered products:</h3>
-            <div *ngFor="let order of orders" class="aside-product">
-                <fieldset class="product-card">
+            <div *ngFor="let order of orders" class="aside-orders">
+                <fieldset class="product-card-order">
                     <p>{{order}}</p>
                 </fieldset>
             </div>
@@ -33,24 +38,23 @@
 </div>
 
 <div class="profile" *ngIf="client">
-    <fieldset>
-        <h3>Personal information</h3>
-        <p>Username: {{client!.username}}</p>
-        <p>Email: {{client!.email}}</p>
-    </fieldset>
-
-    <aside>
+    <div class="wrapInfo">
+        <h3>Personal information:</h3>
         <fieldset>
-            <h3>My ordered products:</h3>
-            <div *ngIf="resultArr">
-                <div *ngFor="let myOrder of resultArr let index = index" class="aside-product">
-                    <fieldset class="product-card" class="ordered">
-                        <img alt="Product Image" src="{{imagesArr[index]}}">
-                        <h3>{{myOrder}}</h3>
-                    </fieldset>
-                </div>
-            </div>
-            <div *ngIf="!resultArr">Loading...</div>
+            <p>Username: {{client!.username}}</p>
+            <p>Email: {{client!.email}}</p>
         </fieldset>
-    </aside> 
+    </div>
+    <aside>
+        <h3>My ordered products:</h3>
+        <div *ngIf="resultArr">
+            <div *ngFor="let myOrder of resultArr let index = index" class="aside-product">
+                <fieldset class="product-card" class="ordered">
+                    <img alt="Product Image" src="{{imagesArr[index]}}">
+                    <h3>{{myOrder}}</h3>
+                </fieldset>
+            </div>
+        </div>
+        <div *ngIf="!resultArr">Loading...</div>
+    </aside>
 </div>

@@ -1,10 +1,15 @@
-<div class="container" *ngIf="allProducts">
-    <div *ngFor="let product of allProducts">
-        <fieldset class="product-card">
-            <h3>{{product.title}}</h3>
-            <img alt="Product Image" src="{{product.productImage}}">
-            <button [routerLink]="['/products', product._id]">Details</button>
-        </fieldset>
+<input type="text" class="search" #search placeholder="Search for product here..."
+    (input)="searchProduct(search.value)" />
+<div class="wrap" *ngIf="allProducts">
+    <h3>All available products:</h3>
+    <div class="container">
+        <div *ngFor="let product of allProducts">
+            <fieldset class="product-card">
+                <h3>{{product.title}}</h3>
+                <img alt="Product Image" src="{{product.productImage}}">
+                <button [routerLink]="['/products', product._id]">Details</button>
+            </fieldset>
+        </div>
     </div>
 </div>
 <p *ngIf="allProducts?.length == 0">No products in database.</p>

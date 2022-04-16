@@ -82,14 +82,12 @@ export class ProfileComponent {
 
       for (const p of this.orderedProducts) {
         let totalQuantityOrderedofThisProduct: Number = 0;
-        console.log(p);
         for (const o of p.orders) {
           const currentOrder: Number = o.quantity;
           totalQuantityOrderedofThisProduct = Number(totalQuantityOrderedofThisProduct) + Number(currentOrder);
         }
         let res = `Total orders for ${p.title} are ${totalQuantityOrderedofThisProduct} kg.`;
         this.orders ? this.orders.push(res) : this.orders = [res];
-        console.log(this.orders);
       }
     });
   }

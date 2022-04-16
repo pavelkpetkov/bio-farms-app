@@ -21,4 +21,10 @@ export class AllProductsComponent {
     this.allProducts = undefined;
     this.productService.loadProducts().subscribe(products => this.allProducts = products);
   }
+
+  searchProduct(search: string): void {
+    this.allProducts = undefined;
+    this.productService.loadProducts().subscribe(products => this.allProducts = products.filter(
+      (one) => { if (search === '') { return one } else if (one.title.toLowerCase().includes(search.toLowerCase())) { return one } else { return null } }));
+  }
 }

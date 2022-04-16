@@ -1,6 +1,8 @@
 .product-card {
     max-width: 350px;
     max-height: 350px;
+    border-radius: 10px;
+    margin: 10px;
 }
 
 .product-card p {
