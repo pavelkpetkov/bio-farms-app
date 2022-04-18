@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 import { UserModule } from './user/user.module';
 import { CoreModule } from './core/core.module';
 import { ProductModule } from './product/product.module';
@@ -16,7 +15,6 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent,
     NotFoundComponent
   ],
   imports: [

@@ -15,7 +15,7 @@ export class ProfileComponent {
   }
 
   get client() {
-    this.clientId = this.userService.user?._id;
+    this.clientEmail = this.userService.user?.email;
     return this.userService.user;
   }
 
@@ -23,9 +23,12 @@ export class ProfileComponent {
   allProducts: any[] | undefined;
   orderedProducts: any[] | undefined;
   orders: any[] | undefined;
-  clientId: any | undefined;
+  clientEmail: any | undefined;
   resultArr: any | undefined;
   imagesArr: any | undefined;
+
+  toggle: boolean = false;
+  detailsArrayIDs: any [] = [['1']];
 
   constructor(
     private userService: UserService,
@@ -45,14 +48,14 @@ export class ProfileComponent {
     this.allProducts = undefined;
     this.productService.loadProducts().subscribe(products => {
       this.allProducts = products;
-      let clientId = this.clientId;
+      let clientEmail = this.clientEmail;
       let result: any = [];
       let images: any = [];
       this.allProducts?.filter(function (el) {
         let arrayOfOrders = el.orders;
         for (let i = 0; i < arrayOfOrders.length; i++) {
           const element = arrayOfOrders[i];
-          if (element.client == clientId) {
+          if (element.client == clientEmail) {
             result.push(el.title);
             result.push(element.quantity);
             images.push(el.productImage);
@@ -75,21 +78,33 @@ export class ProfileComponent {
   loadOrderedProducts() {
     this.orderedProducts = undefined;
     this.orders = undefined;
+    // this.detailsArrayIDs = undefined;
     this.productService.loadProducts().subscribe(products => {
       this.orderedProducts = products
         .filter(p => p.farmer == this.farmer?._id)
         .filter(p => p.orders.length > 0);
 
+        this.detailsArrayIDs = [];
+
       for (const p of this.orderedProducts) {
         let totalQuantityOrderedofThisProduct: Number = 0;
+        let thisProductDetailedOrder = [''];
         for (const o of p.orders) {
           const currentOrder: Number = o.quantity;
           totalQuantityOrderedofThisProduct = Number(totalQuantityOrderedofThisProduct) + Number(currentOrder);
+
+          thisProductDetailedOrder.push(`${o.client} needs ${currentOrder} kg.`);
         }
         let res = `Total orders for ${p.title} are ${totalQuantityOrderedofThisProduct} kg.`;
         this.orders ? this.orders.push(res) : this.orders = [res];
+
+        this.detailsArrayIDs.push(thisProductDetailedOrder);
       }
     });
+  }
+
+  seeClients(): void {
+    this.toggle = !this.toggle;
   }
 
 }

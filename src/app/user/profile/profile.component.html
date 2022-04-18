@@ -27,11 +27,20 @@
     <aside>
         <div *ngIf="orders">
             <h3>Ordered products:</h3>
-            <div *ngFor="let order of orders" class="aside-orders">
+            <div *ngFor="let order of orders let index = index">
                 <fieldset class="product-card-order">
-                    <p>{{order}}</p>
+                    <p class="aside-orders">{{order}}</p>
+                    <div *ngIf="toggle">
+                        <div *ngFor="let currentClientOrder of detailsArrayIDs[index]">
+                            <p class="clientsList">{{currentClientOrder}}</p>
+                        </div>
+                    </div>
+
                 </fieldset>
             </div>
+            <button *ngIf="!toggle" (click)="seeClients()">See clients</button>
+            <button *ngIf="toggle" (click)="seeClients()">Hide clients</button>
+
         </div>
         <div *ngIf="!orders">no orders yet.</div>
     </aside>

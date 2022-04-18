@@ -25,6 +25,7 @@ fieldset {
 .product-card-order {
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
 }
 
 .product-card {
@@ -46,8 +47,9 @@ fieldset {
 }
 
 img {
-    max-width: 200px;
-    max-height: 150px;
+    width: 170px;
+    height: 150px;
+    object-fit: fill;
 }
 
 .ordered {

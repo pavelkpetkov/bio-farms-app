@@ -46,7 +46,7 @@ export class ProductService {
   }
 
   addOrder(id: string, quantity: number) {
-    const newOrder = { client: this.userService.user?._id, quantity: quantity }
+    const newOrder = { client: this.userService.user?.email, quantity: quantity }
     const body = {
         newOrder
       }
