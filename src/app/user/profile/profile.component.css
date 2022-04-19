@@ -60,6 +60,7 @@ img {
 
 .wrapInfo {
     margin: 0 10px 0 10px;
+    min-width: 200px;
 }
 
 aside {
