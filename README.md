@@ -1,27 +1,14 @@
-# BioFarmsApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
 
-## Development server
+## Application for bio products
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This application is made for connecting bio farmers and their clients.
+Used the so called MEAN stack (MongoDB, Express, Angular and Node.js).
+Run npm install for the dependencies. Run ng s and cd server - node server to run the application.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Functionality
+- View all bio products as guest.
+- Search across all of them.
+- Register, login in application as either client or farmer; logout.
+- A farmer can create products, edit, delete their own ones, view all orders from clients in their own profile page.
+- A client can order products and view their own profile page with all ordered products.
