@@ -2,7 +2,7 @@
 
 ## Application for bio products
 
-[logo]: C:\Users\User\Desktop\App_thumbnail.JPG "Logo"
+[logo]: (C:\Users\User\Desktop\App_thumbnail.JPG "Logo")
 
 <br/>
 
