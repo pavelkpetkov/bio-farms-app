@@ -2,7 +2,7 @@
 
 ## Application for bio products
 
-![image] (C:\Users\User\Desktop\App_thumbnail.JPG "Logo")
+![Preview](./src/assets/healthy.jpg)
 
 <br/>
 
