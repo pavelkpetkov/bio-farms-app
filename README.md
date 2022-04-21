@@ -2,13 +2,14 @@
 
 ## Application for bio products
 
-![Preview](./src/assets/healthy.jpg)
+![Preview](./src/assets/App_thumbnail.jpg)
 
 <br/>
 
-This application is made for connecting bio farmers and their clients.
-Used the so called MEAN stack (MongoDB, Express, Angular and Node.js).
-Run npm install for the dependencies. Run ng s and cd server - node server to run the application.
+ - This application is made for connecting bio farmers and their clients.
+ - The so called MEAN stack is used (MongoDB, Express, Angular and Node.js).
+ - Run 'npm install' for the dependencies.
+ - Run 'ng s' and 'cd server' -> 'node server' to run the application.
 
 ## Functionality
 - View all bio products as guest.
