@@ -2,7 +2,7 @@
 
 ## Application for bio products
 
-![Preview](./src/assets/healthy.jpg)
+![Preview](./src/assets/App_thumbnail.jpg)
 
 <br/>
 
