@@ -57,24 +57,65 @@
             <div class="registerForm" id="registerFarmer">
                 <label for="username">Username:</label>
                 <input type="text" name="username" formControlName="username">
+                <ng-container *ngIf="formFarmer.get('username')?.touched">
+                    <p class="error" *ngIf="formFarmer.get('username')?.errors?.['required']">
+                        Username is required!
+                    </p>
+                </ng-container>
                 <br>
                 <label for="email">Email:</label>
                 <input type="text" name="email" formControlName="email">
+                <ng-container *ngIf="formFarmer.get('email')?.touched">
+                    <p class="error" *ngIf="formFarmer.get('email')?.errors?.['required']">
+                        Email is required!
+                    </p>
+                </ng-container>
                 <br>
                 <label for="farmName">Name of your farm:</label>
                 <input type="text" name="farmName" formControlName="farmName">
+                <ng-container *ngIf="formFarmer.get('farmName')?.touched">
+                    <p class="error" *ngIf="formFarmer.get('farmName')?.errors?.['required']">
+                        Name of the farm is required!
+                    </p>
+                </ng-container>
                 <br>
                 <label for="farmLocation">Location of your farm:</label>
                 <input type="text" name="farmLocation" formControlName="farmLocation">
+                <ng-container *ngIf="formFarmer.get('farmLocation')?.touched">
+                    <p class="error" *ngIf="formFarmer.get('farmLocation')?.errors?.['required']">
+                        Location of the farm is required!
+                    </p>
+                </ng-container>
                 <br>
                 <label for="products">Products:</label>
                 <input type="text" name="products" formControlName="products">
+                <ng-container *ngIf="formFarmer.get('products')?.touched">
+                    <p class="error" *ngIf="formFarmer.get('products')?.errors?.['required']">
+                        Some products have to be filled!
+                    </p>
+                </ng-container>
                 <br>
                 <label for="password">Password:</label>
                 <input type="password" name="password" formControlName="password">
+                <ng-container *ngIf="formFarmer.get('password')?.touched">
+                    <p class="error" *ngIf="formFarmer.get('password')?.errors?.['required']">
+                        Password is required!
+                    </p>
+                    <p class="error" *ngIf="formFarmer.get('password')?.errors?.['required'] || formFarmer.get('password')?.errors?.['minLength']">
+                        Password must be at least 3 characters long!
+                    </p>
+                </ng-container>
                 <br>
                 <label for="repeatPassword">Repeat password:</label>
                 <input type="password" name="repeatPassword" formControlName="repeatPassword">
+                <ng-container *ngIf="formFarmer.get('repeatPassword')?.touched">
+                    <p class="error" *ngIf="formFarmer.get('repeatPassword')?.errors?.['required']">
+                        You have to repeat the password!
+                    </p>
+                    <p class="error" *ngIf="formFarmer.get('repeatPassword')?.errors?.['required'] || formFarmer.get('repeatPassword')?.errors?.['minLength']">
+                        Password must be at least 3 characters long!
+                    </p>
+                </ng-container>
                 <br>
                 <button>Register</button>
                 <p>Have an account? <a routerLink="/login">Log In</a></p>
