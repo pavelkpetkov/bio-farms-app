@@ -1,37 +1,39 @@
 
-<p *ngIf="!isOwner" class="error">You have no permission to edit this product!</p>
-<div *ngIf="isOwner">
-    <h2>Edit your product:</h2>
-    <form  #form="ngForm"  action="" method="put" (ngSubmit)="editProduct(form)">
-        <label for="title">Title:</label>
-        <input #titleInput="ngModel" ngModel type="text" name="title" placeholder="{{current.title}}" required [minlength]="3">
-        <ng-container *ngIf="titleInput.touched">
-            <p class="error" *ngIf="titleInput.errors?.['required']">
-                Title is required!
-            </p>
-            <p class="error" *ngIf="titleInput.errors?.['required'] || titleInput.errors?.['minlength']">
-                Title must be at least 3 characters long!
-            </p>
-        </ng-container>
-        <br>
-        <label for="productImage">Image:</label>
-        <input #imageInput="ngModel" ngModel type="text" name="productImage" required>
-        <ng-container *ngIf="imageInput.touched">
-            <p class="error" *ngIf="imageInput.errors?.['required']">
-                Image is required!
-            </p>
-        </ng-container>
-        <br>
-        <label for="description">Description:</label>
-        <input #descriptionInput="ngModel" ngModel type="text" name="description" placeholder="{{current.description}}" required [minlength]="5">
-        <ng-container *ngIf="descriptionInput.touched">
-            <p class="error" *ngIf="descriptionInput.errors?.['required']">
-                Description is required!
-            </p>
-            <p class="error" *ngIf="descriptionInput.errors?.['required'] || descriptionInput.errors?.['minlength']">
-                Description should be more narrative. Let it be at least 5 characters long! 
-            </p>
-        </ng-container>
-        <button>Edit this product</button>
-    </form>
-</div>
+<fieldset>
+    <p *ngIf="!isOwner" class="error">You have no permission to edit this product!</p>
+    <div *ngIf="isOwner">
+        <h2>Edit your product:</h2>
+        <form  #form="ngForm"  action="" method="put" (ngSubmit)="editProduct(form)">
+            <label for="title">Title:</label>
+            <input #titleInput="ngModel" ngModel type="text" name="title" placeholder="{{current.title}}" required [minlength]="3">
+            <ng-container *ngIf="titleInput.touched">
+                <p class="error" *ngIf="titleInput.errors?.['required']">
+                    Title is required!
+                </p>
+                <p class="error" *ngIf="titleInput.errors?.['required'] || titleInput.errors?.['minlength']">
+                    Title must be at least 3 characters long!
+                </p>
+            </ng-container>
+            <br>
+            <label for="productImage">Image:</label>
+            <input #imageInput="ngModel" ngModel type="text" name="productImage" required>
+            <ng-container *ngIf="imageInput.touched">
+                <p class="error" *ngIf="imageInput.errors?.['required']">
+                    Image is required!
+                </p>
+            </ng-container>
+            <br>
+            <label for="description">Description:</label>
+            <input #descriptionInput="ngModel" ngModel type="text" name="description" placeholder="{{current.description}}" required [minlength]="5">
+            <ng-container *ngIf="descriptionInput.touched">
+                <p class="error" *ngIf="descriptionInput.errors?.['required']">
+                    Description is required!
+                </p>
+                <p class="error" *ngIf="descriptionInput.errors?.['required'] || descriptionInput.errors?.['minlength']">
+                    Description should be more narrative. Let it be at least 5 characters long! 
+                </p>
+            </ng-container>
+            <button>Edit this product</button>
+        </form>
+    </div>
+</fieldset>

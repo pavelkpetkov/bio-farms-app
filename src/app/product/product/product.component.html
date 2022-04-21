@@ -7,7 +7,7 @@
 
     <div *ngIf="isOwner">
         <button routerLink="/edit/{{product!._id}}">Edit</button>
-        <button (click)="deleteProduct()">Delete</button>
+        <button class="deleteButton" (click)="deleteProduct()">Delete</button>
     </div>
 
     <div *ngIf="client && !toggle">

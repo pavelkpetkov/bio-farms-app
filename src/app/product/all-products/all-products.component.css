@@ -12,13 +12,9 @@
     margin: 5px;
 }
 
-.product-card button {
-    margin-top: 3px;
-}
-
 img {
     width: 170px;
-    height: 140px;
+    height: 130px;
     object-fit: fill;
 }
 
@@ -38,4 +34,21 @@ img {
 
 .wrap {
     margin: 10px;
+}
+
+button {
+    background-color: rgb(173, 216, 230);
+    border: 1px solid black;
+    border-radius: 5px;
+    color: green;
+    padding: 4px 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(173, 230, 230);
 }

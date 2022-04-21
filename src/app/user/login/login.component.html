@@ -1,11 +1,10 @@
 <div id="login">
-    <!-- {{form.value | json}} -->
     
     <fieldset>
         <div *ngIf="!hide" style="display: flex; flex-direction: column; align-items: center">
-            <p>You are:</p>
+            <h3>You are:</h3>
             <div id="register">
-                <button (click)="userRole()">Client</button>
+                <button class="client-button" (click)="userRole()">Client</button>
                 <button (click)="farmerRole()">Farmer</button>
             </div>
         </div>
