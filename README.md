@@ -2,6 +2,10 @@
 
 ## Application for bio products
 
+[logo]: C:\Users\User\Desktop\App_thumbnail.JPG "Logo"
+
+<br/>
+
 This application is made for connecting bio farmers and their clients.
 Used the so called MEAN stack (MongoDB, Express, Angular and Node.js).
 Run npm install for the dependencies. Run ng s and cd server - node server to run the application.
