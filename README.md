@@ -7,7 +7,7 @@
 <br/>
 
  - This application is made for connecting bio farmers and their clients.
- - It is used the so called MEAN stack (MongoDB, Express, Angular and Node.js).
+ - The so called MEAN stack is used (MongoDB, Express, Angular and Node.js).
  - Run 'npm install' for the dependencies.
  - Run 'ng s' and 'cd server' -> 'node server' to run the application.
 
