@@ -78,7 +78,6 @@ export class ProfileComponent {
   loadOrderedProducts() {
     this.orderedProducts = undefined;
     this.orders = undefined;
-    // this.detailsArrayIDs = undefined;
     this.productService.loadProducts().subscribe(products => {
       this.orderedProducts = products
         .filter(p => p.farmer == this.farmer?._id)

@@ -42,7 +42,9 @@
             <button *ngIf="toggle" (click)="seeClients()">Hide clients</button>
 
         </div>
-        <div *ngIf="!orders">no orders yet.</div>
+        <div *ngIf="!orders">
+            <h3>No orders yet.</h3>
+        </div>
     </aside>
 </div>
 
@@ -57,14 +59,14 @@
     <aside>
         <h3>My ordered products:</h3>
         <div *ngIf="resultArr" class="wrapProducts">
-            <div *ngFor="let myOrder of resultArr let index = index" class="aside-product">
+            <div *ngFor="let myOrder of resultArr let index = index" class="aside-product-client">
                 <fieldset class="product-card" class="ordered">
                     <img alt="Product Image" src="{{imagesArr[index]}}">
                     <h3>{{myOrder}}</h3>
                 </fieldset>
             </div>
-            <p>* you will be contacted via email for available quantities and time of delivery.</p>
         </div>
+        <p *ngIf="resultArr">* you will be contacted via email for available quantities and time of delivery.</p>
         <div *ngIf="!resultArr">Loading...</div>
     </aside>
 </div>

@@ -10,6 +10,8 @@ import { ProductService } from '../product.service';
 })
 export class NewProductComponent {
 
+  errorMessage = '';
+
   constructor(
     private productServise: ProductService,
     private router: Router
@@ -23,6 +25,7 @@ export class NewProductComponent {
       },
       error: (err) => {
         console.log(err);
+        this.errorMessage = err.error.message;
       }
     })
   }

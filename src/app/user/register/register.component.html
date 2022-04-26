@@ -35,6 +35,9 @@
                     <p class="error" *ngIf="formUser.get('password')?.errors?.['required']">
                         Password is required!
                     </p>
+                    <p class="error" *ngIf="formUser.get('password')?.errors?.['minlength']">
+                        Password must be at least 3 characters long!
+                    </p>
                 </ng-container>
                 <br>
                 <label for="repeatPassword">Repeat password:</label>
@@ -43,8 +46,12 @@
                     <p class="error" *ngIf="formUser.get('repeatPassword')?.errors?.['required']">
                         You have to repeat the password!
                     </p>
+                    <p class="error" *ngIf="formUser.get('repeatPassword')?.errors?.['minlength']">
+                        Password must be at least 3 characters long!
+                    </p>
                 </ng-container>
                 <br>
+                <h3 class="errorMessage">{{errorMessage}}</h3>
                 <button>Register</button>
                 <p>Have an account? <a routerLink="/login">Log In</a></p>
             </div>
@@ -101,7 +108,7 @@
                     <p class="error" *ngIf="formFarmer.get('password')?.errors?.['required']">
                         Password is required!
                     </p>
-                    <p class="error" *ngIf="formFarmer.get('password')?.errors?.['required'] || formFarmer.get('password')?.errors?.['minLength']">
+                    <p class="error" *ngIf="formFarmer.get('password')?.errors?.['minlength']">
                         Password must be at least 3 characters long!
                     </p>
                 </ng-container>
@@ -112,11 +119,12 @@
                     <p class="error" *ngIf="formFarmer.get('repeatPassword')?.errors?.['required']">
                         You have to repeat the password!
                     </p>
-                    <p class="error" *ngIf="formFarmer.get('repeatPassword')?.errors?.['required'] || formFarmer.get('repeatPassword')?.errors?.['minLength']">
+                    <p class="error" *ngIf="formFarmer.get('repeatPassword')?.errors?.['minlength']">
                         Password must be at least 3 characters long!
                     </p>
                 </ng-container>
                 <br>
+                <h3 class="errorMessage">{{errorMessage}}</h3>
                 <button>Register</button>
                 <p>Have an account? <a routerLink="/login">Log In</a></p>
             </div>

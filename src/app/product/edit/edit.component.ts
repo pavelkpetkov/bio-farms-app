@@ -16,6 +16,7 @@ export class EditComponent implements OnInit {
   product: IProduct | undefined;
   owner: IFarmer | undefined;
   isOwner: any;
+  errorMessage = '';
 
   get current() {
     return this.product!;
@@ -40,7 +41,7 @@ export class EditComponent implements OnInit {
   }
 
   editProduct(form: NgForm): void {
-    if (form.invalid) { return; }
+    // if (form.invalid) { return; }
     const id = this.activatedRoute.snapshot.params['productId'];
     const owner_id = this.product!.farmer;
     this.productService.editOneProduct(id, owner_id, form.value).subscribe({
@@ -49,6 +50,7 @@ export class EditComponent implements OnInit {
       },
       error: (err) => {
         console.log(err);
+        this.errorMessage = err.error.message;
       }
     })
   }

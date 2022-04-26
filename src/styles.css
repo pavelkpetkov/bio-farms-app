@@ -11,3 +11,11 @@ body {
     font-style: italic;
     font-size: smaller;
 }
+
+.errorMessage {
+    color: red;
+    font-style: italic;
+    font-size: larger;
+    padding-left:20px;
+    background-color: azure;
+}

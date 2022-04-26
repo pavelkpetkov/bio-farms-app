@@ -14,6 +14,7 @@ export class RegisterComponent {
   isUser = false;
   isFarmer = false;
   hide = false;
+  errorMessage = '';
 
   formUser: FormGroup;
   formFarmer: FormGroup;
@@ -27,7 +28,7 @@ export class RegisterComponent {
       username: ['', [Validators.required]],
       email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(3)]],
-      repeatPassword: ['', [Validators.required]]
+      repeatPassword: ['', [Validators.required, Validators.minLength(3)]]
     })
 
     this.formFarmer = this.fb.group({
@@ -37,7 +38,7 @@ export class RegisterComponent {
       farmLocation: ['', [Validators.required]],
       products: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(3)]],
-      repeatPassword: ['', [Validators.required]]
+      repeatPassword: ['', [Validators.required, Validators.minLength(3)]]
     })
 
   }
@@ -51,6 +52,7 @@ export class RegisterComponent {
       },
       error: (err) => {
         console.log(err);
+        this.errorMessage = err.error.message;
       }
     })
   }
@@ -64,6 +66,7 @@ export class RegisterComponent {
       },
       error: (err) => {
         console.log(err);
+        this.errorMessage = err.error.message;
       }
     })
   }

@@ -13,6 +13,7 @@ export class LoginComponent {
   isUser = false;
   isFarmer = false;
   hide = false;
+  errorMessage = '';
 
   constructor(
     private userService: UserService,
@@ -28,6 +29,7 @@ export class LoginComponent {
       },
       error: (err) => {
         console.log(err);
+        this.errorMessage = err.error.message;
       }
     });
   }
@@ -41,6 +43,7 @@ export class LoginComponent {
       },
       error: (err) => {
         console.log(err);
+        this.errorMessage = err.error.message;
       }
     });
   }
