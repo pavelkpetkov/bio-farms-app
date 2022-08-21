@@ -7,6 +7,7 @@ import { ProductRoutingModule } from './product-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { EditComponent } from './edit/edit.component';
+import { DoneComponent } from './done/done.component';
 
 
 
@@ -15,7 +16,8 @@ import { EditComponent } from './edit/edit.component';
     NewProductComponent,
     AllProductsComponent,
     ProductComponent,
-    EditComponent
+    EditComponent,
+    DoneComponent
   ],
   imports: [
     CommonModule,

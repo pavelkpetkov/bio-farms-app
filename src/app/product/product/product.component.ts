@@ -68,7 +68,7 @@ export class ProductComponent {
 
     this.productService.addOrder(id, qty).subscribe(product => {
       this.product = product;
-      this.router.navigate(['/profile']);
+      this.router.navigate(['/ordered']);
     })
   }
  
